@@ -1,0 +1,19 @@
+before_script:
+  - sed -i '/pkg-resources==0.0.0/d' server/requirements.txt
+
+variables:
+  APP_CONTAINER: "web"
+
+test:
+  script:
+    - docker-compose build $APP_CONTAINER
+    - docker-compose run --rm $APP_CONTAINER python manage.py test
+  except:
+    - master
+
+deploy:
+  script:
+    - docker-compose build
+    - docker-compose up -d
+  only:
+    - master

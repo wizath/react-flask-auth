@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  web:
+    restart: always
+    build: ./web
+    ports:
+      - "8000:8000"
+    command: /usr/local/bin/gunicorn -b :8000 manage:app
+    env_file:
+      - /home/apps/test/.env
