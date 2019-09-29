@@ -7,23 +7,10 @@
     <link rel="stylesheet" href="static/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="static/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <style>
         nav {
             border-bottom: 1px solid #e7e7e7;
-        }
-
-        .input-group-text {
-            background-color: white;
-            border-bottom-right-radius: .25rem !important;
-            border-top-right-radius: .25rem !important;
-            border-left-style: none;
-        }
-
-        .input-group {
-            border-style: none !important;
         }
 
         footer {
@@ -33,11 +20,6 @@
         .content {
             min-height: calc(100vh - 188px);
         }
-
-        .CodeMirror, .CodeMirror-scroll {
-            max-height: 70vh;
-        }
-
     </style>
 </head>
 
@@ -47,26 +29,11 @@
 
     <div class="container">
 
-        <a class="navbar-brand" href="#">
-            <img src="static/logo.png" width="50%" alt="">
-        </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline ml-auto">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="search" aria-label="search"
-                           aria-describedby="basic-addon1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                    </div>
-                </div>
-            </form>
-        </div>
 
     </div>
 
@@ -78,7 +45,7 @@
 
         <div class="row">
 
-            <div class="editor col-md-4 offset-md-4" style="height: 80vh">
+            <div class="col-md-4 offset-md-4">
 
                 <h4 class="mb-4">Login</h4>
                 <form>
@@ -97,6 +64,60 @@
                 </form>
 
             </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-md-4">
+
+                <h4 class="mb-4">Session Info</h4>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Valid</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>Valid</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>Valid</td>
+                        <td>True</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h4 class="mb-4">Actions</h4>
+
+                <button type="button" class="btn btn-primary my-2">Refresh</button>
+                <br>
+                <button type="button" class="btn btn-primary my-2">Logout</button>
+                <br>
+                <button type="button" class="btn btn-primary my-2">Invalidate</button>
+
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="mb-4">Private</h4>
+                <button type="button" class="btn btn-primary">Access</button>
+                <hr>
+                <p>Result: 0</p>
+            </div>
+
         </div>
 
     </div>
@@ -112,22 +133,10 @@
             <div class="col-sm-4">
                 <p>© 2019 by wizlabs.pl</p>
             </div>
-
-            <div class="col-sm-1 offset-sm-6">
-                <a href="/github">GitHub</a>
-            </div>
-            <div class="col-sm-1">
-                <a href="/about">About</a>
-            </div>
         </div>
     </div>
 </footer>
 
-
 </body>
-
-<script>
-    var simplemde = new SimpleMDE({element: document.getElementById("editor")});
-</script>
 
 </html>
