@@ -1,4 +1,6 @@
-from flask import jsonify, request, Blueprint, render_template
+import datetime
+
+from flask import jsonify, request, Blueprint
 from flask_jwt_extended import (
     jwt_required, create_access_token,
     create_refresh_token,
@@ -8,8 +10,6 @@ from flask_jwt_extended import (
     jwt_refresh_token_required,
     unset_jwt_cookies
 )
-import datetime
-
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -24,6 +24,8 @@ def login():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 
+    print(request.json)
+
     username = request.json.get('username', None)
     password = request.json.get('password', None)
 
@@ -35,8 +37,10 @@ def login():
     refresh_token = create_refresh_token(identity=username)
 
     # Set the JWT cookies in the response
-    resp = jsonify({'logged': True, 'expire': (datetime.datetime.now() +
-                                               datetime.timedelta(minutes=15)).timestamp()})
+    resp = jsonify({'valid': True,
+                    'expires_in': (datetime.datetime.now() +
+                                   datetime.timedelta(minutes=15)).timestamp(),
+                    'user_id': 0})
     set_access_cookies(resp, access_token)
     set_refresh_cookies(resp, refresh_token)
     return resp, 200

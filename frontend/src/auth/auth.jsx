@@ -9,23 +9,12 @@ const auth = {
     async loadSession() {
         let token = localStorage.getItem('session');
         try {
-            this.session = JSON.parse(token);
+            let json_session = JSON.parse(token);
+            this.session.valid = json_session.valid;
+            this.session.expires_in = json_session.expires_in;
+            this.session.user_id = json_session.user_id;
         } catch (error) {
             localStorage.clear();
-            this.session = {
-                valid: false
-            }
-        }
-
-        if (this.sessionExpired()) {
-            try {
-                let response = await this.refresh();
-                this.updateSession(response);
-            } catch (error) {
-                this.session = {
-                    valid: false,
-                }
-            }
         }
     },
 

@@ -18,20 +18,20 @@ class Session extends Component {
     }
 
     updateSessionInfo = () => {
-        let old_state = this.state;
-        console.log(auth.session);
-
-        old_state.valid  = auth.session.valid;
-        if (auth.session.valid) {
-            old_state.expires_in = auth.expires_in  * 1000;
-            old_state.user_id = auth.user_id;
-        } else {
-            old_state.expires_in = new Date();
-            old_state.user_id = 0;
-        }
-
-        console.log(old_state);
-        this.setState(old_state);
+        // let old_state = this.state;
+        // console.log(auth.session);
+        //
+        // old_state.valid  = auth.session.valid;
+        // if (auth.session.valid) {
+        //     old_state.expires_in = auth.expires_in  * 1000;
+        //     old_state.user_id = auth.user_id;
+        // } else {
+        //     old_state.expires_in = new Date();
+        //     old_state.user_id = 0;
+        // }
+        //
+        // console.log(old_state);
+        // this.setState(old_state);
     };
 
     render() {
