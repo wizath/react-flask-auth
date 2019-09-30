@@ -1,0 +1,26 @@
+nav {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.input-group-text {
+    background-color: white;
+    border-bottom-right-radius: .25rem !important;
+    border-top-right-radius: .25rem !important;
+    border-left-style: none;
+}
+
+.input-group {
+    border-style: none !important;
+}
+
+footer {
+    margin-bottom: 10px;
+}
+
+.content {
+    min-height: calc(100vh - 188px);
+}
+
+.no-border {
+    border: 0 none;
+}
