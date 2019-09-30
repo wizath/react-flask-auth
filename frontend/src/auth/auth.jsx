@@ -2,7 +2,9 @@ import axios from 'axios';
 import config from '../config'
 
 const auth = {
-    session: null,
+    session: {
+        valid: false
+    },
 
     async loadSession() {
         let token = localStorage.getItem('session');
@@ -28,6 +30,8 @@ const auth = {
     },
 
     sessionExpired() {
+        console.log(this.session);
+
         let not_valid = !this.session.valid;
         let expired = !this.session.expires_in < new Date();
 
@@ -66,6 +70,16 @@ const auth = {
                     password
                 }
             });
+
+
+            if (response.data)
+            {
+                this.session.valid = response.data.valid;
+                this.session.expires_in = response.data.expires_in;
+                this.session.user_id = response.data.user_id;
+
+                localStorage.setItem('session', this.session);
+            }
 
             return response.data;
         } catch (error) {
@@ -130,7 +144,7 @@ async function refreshTokenInterceptor(error) {
 function tokenExpired(error) {
     if (error.response) {
         if (error.response.status === 401) {
-            if (error.response.data) {
+            if (error.response.data.msg) {
                 if (error.response.data.msg.includes('expired')) {
                     return true;
                 }

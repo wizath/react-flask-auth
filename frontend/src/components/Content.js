@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Session from "./Session";
 import Actions from "./Actions";
 import Private from "./Private";
+import Login from "./Login";
 
 class Content extends Component {
     render() {
@@ -13,25 +14,7 @@ class Content extends Component {
                     <div className="row">
 
                         <div className="col-md-4 offset-md-4">
-
-                            <h4 className="mb-4">Login</h4>
-                            <form>
-                                <div className="form-group my-2">
-                                    <input type="email" className="form-control" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp"
-                                           placeholder="Enter email"/>
-                                </div>
-                                <div className="form-group my-2">
-                                    <input type="password" className="form-control" id="exampleInputPassword1"
-                                           placeholder="Password"/>
-                                </div>
-                                <div className="form-check my-2">
-                                    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                                    <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
-                                </div>
-                                <button type="submit" className="btn btn-outline-secondary">Submit</button>
-                            </form>
-
+                            <Login/>
                         </div>
 
                     </div>
