@@ -27,34 +27,38 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h4 className="mb-4">Login</h4>
-                <form>
-                    <div className="form-group my-2">
-                        <input type="username"
-                               name="username"
-                               className="form-control"
-                               id="exampleInputEmail1"
-                               aria-describedby="emailHelp"
-                               placeholder="Enter email"
-                               onChange={this.handleChange}/>
+            <div className="row">
+                <div className="col-md-4 offset-md-4">
+                    <div>
+                        <h4 className="mb-4">Login</h4>
+                        <form>
+                            <div className="form-group my-2">
+                                <input type="username"
+                                       name="username"
+                                       className="form-control"
+                                       id="exampleInputEmail1"
+                                       aria-describedby="emailHelp"
+                                       placeholder="Enter email"
+                                       onChange={this.handleChange}/>
+                            </div>
+                            <div className="form-group my-2">
+                                <input type="password"
+                                       name="password"
+                                       className="form-control"
+                                       id="exampleInputPassword1"
+                                       placeholder="Password"
+                                       onChange={this.handleChange}/>
+                            </div>
+                            <div className="form-check my-2">
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+                                <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
+                            </div>
+                            <button type="submit" className="btn btn-outline-secondary"
+                                    onClick={this.handleFormSubmit}>Submit
+                            </button>
+                        </form>
                     </div>
-                    <div className="form-group my-2">
-                        <input type="password"
-                               name="password"
-                               className="form-control"
-                               id="exampleInputPassword1"
-                               placeholder="Password"
-                               onChange={this.handleChange}/>
-                    </div>
-                    <div className="form-check my-2">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
-                    </div>
-                    <button type="submit" className="btn btn-outline-secondary"
-                            onClick={this.handleFormSubmit}>Submit
-                    </button>
-                </form>
+                </div>
             </div>
         );
     }
