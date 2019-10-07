@@ -20,6 +20,10 @@ class Login extends Component {
         try {
             let response = await auth.login(this.state.username, this.state.password);
             console.log(response);
+            if (response.valid) {
+                const {from} = this.props.location.state || {from: {pathname: "/"}};
+                this.props.history.replace(from);
+            }
         } catch (error) {
             console.log(error);
         }

@@ -9,11 +9,12 @@ const auth = {
     async loadSession() {
         let token = localStorage.getItem('session');
         try {
-            let json_session = JSON.parse(token);
-            this.session.valid = json_session.valid;
-            this.session.expires_in = json_session.expires_in;
-            this.session.user_id = json_session.user_id;
+            let json_token = JSON.parse(token);
+            this.session.valid = json_token.valid;
+            this.session.expires_in = json_token.expires_in;
+            this.session.user_id = json_token.user_id;
         } catch (error) {
+            console.log(error);
             localStorage.clear();
         }
     },
@@ -60,14 +61,13 @@ const auth = {
                 }
             });
 
-
             if (response.data)
             {
                 this.session.valid = response.data.valid;
                 this.session.expires_in = response.data.expires_in;
                 this.session.user_id = response.data.user_id;
 
-                localStorage.setItem('session', this.session);
+                localStorage.setItem('session', JSON.stringify(this.session));
             }
 
             return response.data;
