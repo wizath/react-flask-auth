@@ -14,17 +14,10 @@ from flask_jwt_extended import (
 auth_bp = Blueprint('auth', __name__)
 
 
-# @auth_bp.route('/')
-# def homepage():
-#     return render_template('index.html')
-
-
 @auth_bp.route('/login', methods=['POST'])
 def login():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
-
-    print(request.json)
 
     username = request.json.get('username', None)
     password = request.json.get('password', None)
@@ -46,7 +39,7 @@ def login():
     return resp, 200
 
 
-@auth_bp.route('/user/refresh', methods=['POST'])
+@auth_bp.route('/refresh', methods=['POST'])
 @jwt_required
 @jwt_refresh_token_required
 def refresh():
@@ -65,7 +58,7 @@ def refresh():
 @jwt_required
 def protected():
     current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
+    return jsonify(logged_in_as=current_user, timestamp=datetime.datetime.now().timestamp()), 200
 
 
 @auth_bp.route('/logout', methods=['POST'])

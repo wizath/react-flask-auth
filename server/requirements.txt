@@ -1,18 +1,7 @@
-asn1crypto==0.24.0
-cffi==1.11.5
-click==6.7
-cryptography==2.2.2
-Flask==0.12.2
-Flask-Cors==3.0.4
-Flask-JWT-Extended==3.8.1
-Flask-Script==2.0.6
-gunicorn==19.7.1
-idna==2.6
-itsdangerous==0.24
-Jinja2==2.10
-MarkupSafe==1.0
-pycparser==2.18
-PyJWT==1.6.1
-python-dotenv==0.8.2
-six==1.11.0
+python Click==7.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.0
+python-dotenv==0.10.1
 Werkzeug==0.14.1

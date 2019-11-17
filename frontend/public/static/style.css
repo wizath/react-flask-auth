@@ -24,3 +24,11 @@ footer {
 .no-border {
     border: 0 none;
 }
+
+.link {
+    color: white;
+}
+
+.link:hover {
+    color: white;
+}

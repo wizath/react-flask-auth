@@ -1,9 +1,10 @@
 import os
 
 from flask import Flask
-from config import config
-from flask_jwt_extended import JWTManager
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager
+
+from config import config
 
 jwt = JWTManager()
 cors = CORS(supports_credentials=True)
@@ -11,7 +12,7 @@ cors = CORS(supports_credentials=True)
 
 def create_app(config_name=None):
     if config_name is None:
-        config_name = os.environ.get('APP_CONFIG', 'development')
+        config_name = os.environ.get('FLASK_ENV', 'development')
 
     app = Flask(__name__)
     app.config.from_object(config[config_name])

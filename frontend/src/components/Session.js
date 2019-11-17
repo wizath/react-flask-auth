@@ -14,24 +14,27 @@ class Session extends Component {
     };
 
     componentWillMount() {
-        setInterval(this.updateSessionInfo, 500);
+        this.updateSessionInfo();
+        this.interval = setInterval(this.updateSessionInfo, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     updateSessionInfo = () => {
-        // let old_state = this.state;
-        // console.log(auth.session);
-        //
-        // old_state.valid  = auth.session.valid;
-        // if (auth.session.valid) {
-        //     old_state.expires_in = auth.expires_in  * 1000;
-        //     old_state.user_id = auth.user_id;
-        // } else {
-        //     old_state.expires_in = new Date();
-        //     old_state.user_id = 0;
-        // }
-        //
-        // console.log(old_state);
-        // this.setState(old_state);
+        let old_state = this.state;
+
+        old_state.valid  = auth.session.valid;
+        if (auth.session.valid) {
+            old_state.expires_in = auth.session.expires_in;
+            old_state.user_id = auth.session.user_id;
+        } else {
+            old_state.expires_in = 0;
+            old_state.user_id = 0;
+        }
+
+        this.setState(old_state);
     };
 
     render() {
@@ -52,7 +55,7 @@ class Session extends Component {
                     </tr>
                     <tr>
                         <td>Expiration</td>
-                        <td>{new Date(this.state.expires_in).toLocaleString('en-GB')}</td>
+                        <td>{new Date(this.state.expires_in * 1000).toLocaleString('en-GB')}</td>
                     </tr>
                     <tr>
                         <td>User ID</td>

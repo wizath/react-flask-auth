@@ -61,8 +61,7 @@ const auth = {
                 }
             });
 
-            if (response.data)
-            {
+            if (response.data) {
                 this.session.valid = response.data.valid;
                 this.session.expires_in = response.data.expires_in;
                 this.session.user_id = response.data.user_id;
@@ -77,10 +76,14 @@ const auth = {
     },
 
     async logout() {
-        await axios(`${config.apiUrl}/logout`, {
-            method: "post",
-            withCredentials: true,
-        });
+        try {
+            await axios(`${config.apiUrl}/logout`, {
+                method: "post",
+                withCredentials: true,
+            });
+        } catch (e) {
+            // even if error occur during logout, clear local storage
+        }
 
         localStorage.clear();
         this.session = {
@@ -157,7 +160,6 @@ axios.interceptors.response.use(
         return Promise.reject(error);
     }
 );
-
 
 auth.loadSession();
 export default auth;
