@@ -3,7 +3,7 @@ cffi==1.11.5
 click==6.7
 cryptography==2.2.2
 Flask==0.12.2
-Flask-Cors==3.0.4
+Flask-Cors==3.0.9
 Flask-JWT-Extended==3.8.1
 Flask-Script==2.0.6
 gunicorn==19.7.1
