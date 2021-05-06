@@ -2,7 +2,7 @@ asn1crypto==0.24.0
 cffi==1.11.5
 click==6.7
 cryptography==3.2
-Flask==0.12.2
+Flask==1.0
 Flask-Cors==3.0.9
 Flask-JWT-Extended==3.8.1
 Flask-Script==2.0.6
